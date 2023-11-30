@@ -174,3 +174,22 @@ func GetPengeluaranById(c *gin.Context) {
 
 	c.JSON(200, response)
 }
+
+func GetPengeluaranFilterByJenisPengeluaran(c *gin.Context) {
+	jenisPengeluaran := c.Param("jenis_pengeluaran")
+	pengeluaran, err := models.GetPengeluaranByJenisPengeluaran(jenisPengeluaran)
+	if err != nil {
+		c.JSON(500, gin.H{
+			"Error": "Could Not Get Pengeluaran",
+		})
+		c.Abort()
+		return
+	}
+	response := PengeluaranResponse{
+		JenisPengeluaran: pengeluaran.JenisPengeluaran,
+		Harga:            pengeluaran.Harga,
+		Tanggal:          pengeluaran.Tanggal,
+		Keterangan:       pengeluaran.Keterangan,
+	}
+	c.JSON(200, response)
+}

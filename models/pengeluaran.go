@@ -73,3 +73,12 @@ func GetPengeluarnById(id int) (Pengeluaran, error) {
 	}
 	return pengeluaran, nil
 }
+
+func GetPengeluaranFilterByJenisPengeluaran(jenisPengeluaran string) ([]Pengeluaran, error) {
+	var pengeluaran []Pengeluaran
+	result := database.GlobalDB.Where("jenis_pengeluaran = ?", jenisPengeluaran).Find(&pengeluaran)
+	if result.Error != nil {
+		return nil, result.Error
+	}
+	return pengeluaran, nil
+}

@@ -49,6 +49,7 @@ func setupRouter() *gin.Engine {
 			pengeluaran.GET("pengeluaranByJenis", controllers.GetPengeluaranByJenisPengeluaran)
 			pengeluaran.GET("pengeluaranByTanggal", controllers.GetPengeluaranByTanggal)
 			pengeluaran.GET("pengeluaranById", controllers.GetPengeluaranById)
+			pengeluaran.GET("GetPengeluaranFilterByJenisPengeluaran", controllers.GetPengeluaranFilterByJenisPengeluaran)
 		}
 	}
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
