@@ -175,9 +175,9 @@ func GetPengeluaranById(c *gin.Context) {
 	c.JSON(200, response)
 }
 
-func GetPengeluaranFilterByJenisPengeluaran(c *gin.Context) {
+func GetPengeluaranFilterByJenisPengeluara(c *gin.Context) {
 	jenisPengeluaran := c.Param("jenis_pengeluaran")
-	pengeluaran, err := models.GetPengeluaranByJenisPengeluaran(jenisPengeluaran)
+	pengeluaran, err := models.GetPengeluaranFilterByJenisPengeluaran(jenisPengeluaran)
 	if err != nil {
 		c.JSON(500, gin.H{
 			"Error": "Could Not Get Pengeluaran",
